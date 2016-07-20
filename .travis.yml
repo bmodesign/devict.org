@@ -4,4 +4,4 @@ go:
   - 1.6
 
 install: go get github.com/spf13/hugo
-build: hugo
+script: hugo && ls
