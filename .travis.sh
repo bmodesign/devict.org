@@ -17,9 +17,12 @@ rm -rf public/
 # Clone the deployment repo into a new repo named "public"
 git clone --depth=5 --branch=master git@github.com:devict/devict.github.io.git public
 
-# Generate the site in the public dir, removing any existing files that were
-# deleted in the source.
-hugo --cleanDestinationDir -d public
+# Delete whatever's in that repo now except for the .git folder. If it's
+# supposed to be there it will come back when we generate the site.
+find public -maxdepth 1 -mindepth 1 -not -name ".git" -exec rm -rf {} \;
+
+# Generate the site in the public dir
+hugo -d public
 
 # Switch to the build dir
 cd public
