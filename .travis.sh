@@ -25,7 +25,7 @@ hugo --cleanDestinationDir -d public
 cd public
 
 # If there are no changes to the compiled output then just bail.
-if [ -z $(git diff --exit-code) ]; then
+if $(git diff --quiet); then
     echo "No changes to the output on this push; exiting."
     exit 0
 fi
